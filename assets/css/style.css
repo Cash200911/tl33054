@@ -1,0 +1,477 @@
+/* --- 基本重置与全局样式 --- */
+body, h1, h2, h3, p, ul, li, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* 边框和内边距包含在元素总宽度和高度内 */
+}
+
+body {
+    font-family: 'Microsoft YaHei', 'Arial', sans-serif; /* 使用常用中文字体和备用西文字体 */
+    line-height: 1.6;
+    color: #333; /* 主文本颜色 */
+    background-color: #f4f7f6; /* 柔和的浅灰色背景 */
+    scroll-behavior: smooth; /* 平滑滚动到页面锚点 */
+}
+
+a {
+    text-decoration: none;
+    color: #e60000; /* 强调的红色链接 */
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #c00000; /* 鼠标悬停时的深红色 */
+}
+
+.container {
+    width: 90%; /* 内容区域宽度 */
+    max-width: 1200px; /* 最大宽度限制 */
+    margin: 0 auto; /* 居中 */
+    padding: 0 15px; /* 左右内边距 */
+}
+
+/* --- Header 样式 --- */
+header {
+    background: #1a1a1a; /* 深邃的黑色背景 */
+    color: #fff;
+    padding: 1.2rem 0;
+    border-bottom: 3px solid #e60000; /* 醒目的红色边框 */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* 底部阴影增加立体感 */
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between; /* 标题和导航左右对齐 */
+    align-items: center;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #f0f0f0;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline-block; /* 横向排列导航项 */
+    margin-left: 25px;
+}
+
+header nav ul li a {
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1rem;
+    position: relative; /* 用于下划线动画 */
+}
+
+/* 导航项下划线动画 */
+header nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px; /* 调整下划线位置 */
+    width: 0;
+    height: 2px;
+    background: #e60000; /* 红色下划线 */
+    transition: width 0.3s ease-out;
+}
+
+header nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* --- Hero Banner 样式 --- */
+.hero-banner {
+    /* 请将此处的 'assets/img/banner.jpg' 替换为您实际上传的Banner图片文件名 */
+    background: url('assets/img/banner.jpg') no-repeat center center/cover;
+    color: #fff;
+    height: 600px; /* 调整高度以适应您的设计 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* 防止内容溢出 */
+}
+
+/* 添加一层半透明遮罩，使文字更清晰 */
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* 半透明黑色遮罩 */
+    z-index: 0; /* 确保在内容之下 */
+}
+
+.hero-banner .container {
+    position: relative; /* 确保内容在遮罩之上 */
+    z-index: 1;
+}
+
+.hero-banner h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+}
+
+.hero-banner p {
+    font-size: 1.6rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+}
+
+.cta-buttons .btn {
+    display: inline-block;
+    padding: 12px 25px;
+    margin: 0 15px;
+    border-radius: 30px; /* 圆角按钮 */
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.cta-buttons .btn-primary {
+    background: #e60000; /* 鲜艳的红色 */
+    color: #fff;
+    border-color: #e60000;
+}
+
+.cta-buttons .btn-primary:hover {
+    background: #c00000;
+    border-color: #c00000;
+    transform: translateY(-3px); /* 轻微上移 */
+}
+
+.cta-buttons .btn-secondary {
+    background: transparent;
+    color: #fff;
+    border-color: #fff;
+}
+
+.cta-buttons .btn-secondary:hover {
+    background: #fff;
+    color: #e60000;
+    transform: translateY(-3px);
+}
+
+/* --- Section 通用样式 --- */
+section {
+    padding: 60px 0; /* 上下留白 */
+    text-align: center;
+    background-color: #fff; /* 白色背景 */
+    margin-bottom: 30px; /* Section 之间的间隔 */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* 轻微的阴影 */
+}
+
+section h3 {
+    font-size: 2.8rem;
+    margin-bottom: 3rem;
+    color: #e60000; /* 醒目的红色标题 */
+    position: relative;
+    display: inline-block; /* 使伪元素可以相对定位 */
+}
+
+/* 标题下方的装饰线 */
+section h3::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px; /* 调整装饰线位置 */
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: #e60000;
+    border-radius: 2px;
+}
+
+/* --- 游戏列表样式 --- */
+.games-section .game-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* 在小屏幕上换行 */
+    gap: 30px; /* 游戏项之间的间距 */
+}
+
+.game-item {
+    flex: 1; /* 项目伸缩 */
+    min-width: 280px; /* 最小宽度，保证在小屏幕也能正常显示 */
+    max-width: 320px;
+    border: 1px solid #e0e0e0; /* 浅灰色边框 */
+    border-radius: 8px;
+    padding: 20px;
+    background: #f9f9f9; /* 稍微不同于Section的背景 */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.game-item:hover {
+    transform: translateY(-10px); /* 鼠标悬停时向上移动 */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* 增加阴影深度 */
+}
+
+.game-item img {
+    max-width: 100%;
+    height: 200px; /* 固定图片高度 */
+    object-fit: cover; /* 图片剪裁模式，保持比例并填充容器 */
+    border-radius: 5px;
+    margin-bottom: 15px;
+    border: 3px solid #e60000; /* 图片边框 */
+}
+
+.game-item h4 {
+    font-size: 1.7rem;
+    margin-bottom: 0.8rem;
+    color: #333;
+}
+
+.game-item p {
+    font-size: 1.05rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+    min-height: 45px; /* 确保段落高度一致 */
+}
+
+.game-item a {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #e60000;
+    color: #fff;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.game-item a:hover {
+    background: #c00000;
+}
+
+/* --- 为什么选择我们样式 --- */
+.why-us-section ul {
+    list-style: none;
+    padding: 0;
+    display: inline-block; /* 让列表可以居中 */
+    text-align: left; /* 列表项左对齐 */
+}
+
+.why-us-section li {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    color: #444;
+    display: flex;
+    align-items: center; /* 文字和图标垂直居中 */
+}
+
+/* 添加一个简单的绿色对勾图标 */
+.why-us-section li::before {
+    content: '✓';
+    color: #28a745; /* 绿色 */
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-right: 15px;
+    display: inline-block;
+}
+
+/* --- 优惠活动样式 --- */
+.promotions-section {
+    background: linear-gradient(to right, #f6d365 0%, #f9a03c 100%); /* 渐变背景 */
+    color: #333; /* 文字颜色 */
+    border-radius: 8px;
+}
+
+.promotions-section h3 {
+    color: #333; /* 标题颜色与背景协调 */
+}
+
+.promotions-section h3::after {
+    background: #333; /* 标题下划线颜色 */
+}
+
+.promotions-section p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+}
+
+.promotions-section .btn-secondary { /* 重用按钮样式，但颜色需要调整 */
+    background: #333;
+    border-color: #333;
+    color: #fff;
+}
+
+.promotions-section .btn-secondary:hover {
+    background: #555;
+    border-color: #555;
+}
+
+/* --- 联系我们样式 --- */
+.contact-section ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    display: inline-block;
+    font-size: 1.2rem;
+}
+
+.contact-section li {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.contact-section li strong {
+    color: #e60000; /* 强调联系方式类型 */
+    width: 180px; /* 固定宽度，对齐 */
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.contact-section a {
+    color: #333; /* 联系方式链接颜色 */
+    font-weight: bold;
+}
+
+.contact-section a:hover {
+    color: #e60000;
+}
+
+/* --- Footer 样式 --- */
+footer {
+    background: #1a1a1a; /* 深色背景 */
+    color: #bbb;
+    text-align: center;
+    padding: 3rem 0;
+    margin-top: 40px; /* 与上一个section的间隔 */
+    border-top: 3px solid #e60000; /* 红色顶边 */
+    font-size: 0.9rem;
+}
+
+footer .container {
+    display: flex;
+    flex-direction: column; /* 内容堆叠显示 */
+    align-items: center;
+}
+
+footer p {
+    margin-bottom: 1rem;
+}
+
+footer nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex; /* 横向排列底部导航 */
+}
+
+footer nav ul li {
+    margin: 0 15px;
+}
+
+footer nav ul li a {
+    color: #bbb;
+}
+
+footer nav ul li a:hover {
+    color: #fff;
+}
+
+/* --- 响应式设计 --- */
+@media (max-width: 992px) {
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    header nav ul {
+        margin-top: 15px;
+    }
+    header nav ul li {
+        margin: 0 10px;
+    }
+
+    .hero-banner h2 {
+        font-size: 2.8rem;
+    }
+    .hero-banner p {
+        font-size: 1.3rem;
+    }
+    .cta-buttons .btn {
+        padding: 10px 20px;
+        font-size: 1.1rem;
+        margin: 5px; /* 小屏幕按钮间距 */
+    }
+
+    section {
+        padding: 40px 0;
+    }
+    section h3 {
+        font-size: 2.2rem;
+        margin-bottom: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+    .hero-banner {
+        height: 450px; /* 缩小banner高度 */
+    }
+    .hero-banner h2 {
+        font-size: 2.2rem;
+    }
+    .hero-banner p {
+        font-size: 1.2rem;
+    }
+
+    .game-list {
+        flex-direction: column; /* 游戏项堆叠 */
+        align-items: center;
+    }
+    .game-item {
+        max-width: 90%; /* 游戏项宽度适应手机 */
+        min-width: 280px; /* 保持最小宽度 */
+    }
+
+    .why-us-section li, .contact-section li {
+        font-size: 1.1rem;
+        justify-content: center; /* 列表项居中 */
+        text-align: center;
+    }
+    .why-us-section li::before, .contact-section li strong {
+        display: none; /* 在小屏幕上隐藏图标和标签宽度 */
+    }
+    .contact-section ul {
+        text-align: center; /* 联系方式也居中 */
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+    .hero-banner h2 {
+        font-size: 1.8rem;
+    }
+    .hero-banner p {
+        font-size: 1rem;
+    }
+    .cta-buttons .btn {
+        display: block; /* 按钮堆叠显示 */
+        width: 80%;
+        margin: 10px auto;
+    }
+    section h3 {
+        font-size: 1.8rem;
+    }
+}
